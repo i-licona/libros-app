@@ -1,0 +1,20 @@
+<mat-drawer-container class="example-container" autosize>
+  <!-- navbar menu -->
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-navbar></app-navbar>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <!-- toggle navbar -->
+    <button type="button" mat-button (click)="drawer.toggle();rigth = !rigth" color="primary">
+      <i class="material-icons" *ngIf="rigth">arrow_circle_right</i>
+      <i class="material-icons" *ngIf="!rigth">arrow_circle_left</i>
+    </button>
+    <!-- main container -->
+    <div class="container">
+      <!-- breadcrum -->
+      <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+      <!-- page content -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

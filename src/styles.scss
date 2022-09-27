@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body
+{
+  height: 100%;
+  background: #8E2DE2 !important;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2) !important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4A00E0, #8E2DE2) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  /* display: flex; */
+  height: 100%;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.nav-item{
+  cursor: pointer;
+}
+
+li a{
+  color:#673ab7 !important;
+  font-weight: bold;
+}
+.spinner-center{
+  margin:0px auto;
+}

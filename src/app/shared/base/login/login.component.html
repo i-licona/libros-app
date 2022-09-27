@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <mat-card class="border-0 shadow rounded-3 my-105">
+        <mat-card-title class="text-center mb-5 fs-5">Iniciar sesión</mat-card-title>
+        <form autocomplete="off" [formGroup]="formLogin" (ngSubmit)="saveChanges()">
+           <div class="row">
+              <mat-form-field appearance="fill" class="col-12" color="primary" >
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+                <mat-error *ngIf="formLogin.get('email').hasError('email') && !formLogin.get('email').hasError('required')">
+                  Por favor ingrese una dirección valida
+                </mat-error>
+                <mat-error *ngIf="formLogin.get('email').hasError('required')">
+                  El email es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="col-12" >
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password">
+                <mat-error *ngIf="formLogin.get('password').hasError('required')">
+                  La contraseña es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-spinner class="spinner-center" *ngIf="loadding"></mat-spinner>
+              <div class="row" *ngIf="!loadding">
+                  <button type="submit" class="col-lg-6" mat-button color="primary" [disabled]="formLogin.invalid">
+                    Iniciar sesión <i class="material-icons">login</i>
+                  </button>
+                  <button type="button" class="col-lg-6" mat-button color="accent">Crear cuenta</button>
+              </div>
+           </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>
