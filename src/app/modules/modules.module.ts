@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
 import { ModulesRoutingModule } from './modules-routing.module';
+import { CommonImportsModule } from '../shared/common-imports/common-imports/common-imports.module';
 
 
 
@@ -13,6 +14,7 @@ import { ModulesRoutingModule } from './modules-routing.module';
   ],
   imports: [
     CommonModule,
+    CommonImportsModule,
     ModulesRoutingModule
   ]
 })
