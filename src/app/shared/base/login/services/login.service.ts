@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app.reducer';
 import { PostLoginModel, PostResponseLoginModel } from '../models/login.model';
 
 @Injectable({
@@ -8,9 +10,10 @@ import { PostLoginModel, PostResponseLoginModel } from '../models/login.model';
 })
 export class LoginService {
   private urlApi:string = 'https://localhost:7163/api/cuentas';
-  public token:string;
+  private token:string;
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private store:Store<AppState>
   ) { }
 
   login(data:PostLoginModel):Observable<PostResponseLoginModel>{
@@ -25,5 +28,12 @@ export class LoginService {
       return false;
     }
   }
+
+  getToken():string{
+    this.token = localStorage.getItem('token');
+    return this.token;
+  }
+
+
 
 }

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.formLogin = this.formBuilder.group({
       email:[null, [Validators.required, Validators.email]],
-      password:[null, [Validators.required]]
+      password:[null, Validators.required]
     });
   }
 
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   saveChanges(){
     /* start loadding */
     this.loadding = true;
+    console.log(this.formLogin.value);
     this.loginService.login(this.formLogin.value).subscribe(resp => {
       if (resp.token) {
         /* save data session in local storage */

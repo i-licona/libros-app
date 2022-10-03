@@ -9,6 +9,12 @@ import { CommonImportsModule } from './shared/common-imports/common-imports/comm
 /* created modules */
 import { BaseModule } from './shared/base/base.module';
 import { ModulesModule } from './modules/modules.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthorsEffects } from './modules/authors/store/effects/authors.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +25,13 @@ import { ModulesModule } from './modules/modules.module';
     BrowserAnimationsModule,
     CommonImportsModule,
     BaseModule,
-    ModulesModule
+    ModulesModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([AuthorsEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge:25,
+      logOnly:environment.production,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
