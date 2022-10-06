@@ -1,9 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MyErrorStateMatcher } from 'src/app/utils/custom-validations';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   /* class properties */
   public formLogin:FormGroup;
   public loadding:boolean = false;
-  public matcher = new MyErrorStateMatcher();
   /* constructor of clase */
   constructor(
     /* dependenci inyection */
@@ -28,8 +26,7 @@ export class LoginComponent implements OnInit {
     this.formLogin = this.formBuilder.group({
       email:[null, [Validators.required, Validators.email]],
       password:[null, Validators.required],
-      pass:[null, Validators.required],
-    }, { validators: this.checkPasswords });
+    });
   }
 
   ngOnInit(): void {
@@ -70,16 +67,5 @@ export class LoginComponent implements OnInit {
         verticalPosition:'bottom',
       });
     });
-  }
-
-  checkPasswords(group: AbstractControl){
-    let pass = group.get('password').value;
-    let confirmPass = group.get('pass').value;
-    if (pass != confirmPass) {
-      return { notMatch: true };
-    }
-    else{
-      return null;
-    }
   }
 }
