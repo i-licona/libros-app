@@ -22,6 +22,17 @@
                   La contraseña es <strong>requerida</strong>
                 </mat-error>
               </mat-form-field>
+              <mat-form-field appearance="fill" class="col-12" >
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="pass" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="formLogin.get('pass').hasError('required') && formLogin.get('pass').touched">
+                  La contraseña es <strong>requerida</strong>
+                </mat-error>
+                <mat-error *ngIf="formLogin.hasError('notMatch')">
+                  Las contraseñas <strong>no coinciden</strong>
+                </mat-error>
+              </mat-form-field>
+              <p>{{ formLogin.errors | json }}</p>
               <mat-spinner class="spinner-center" *ngIf="loadding"></mat-spinner>
               <div class="row" *ngIf="!loadding">
                   <button type="submit" class="col-lg-6" mat-button color="primary" [disabled]="formLogin.invalid">
