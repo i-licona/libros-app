@@ -10,7 +10,7 @@ import { getAuthors } from './store/actions/authors.actions';
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.scss']
 })
-export class AuthorsComponent implements OnInit, OnDestroy {
+export class AuthorsComponent implements OnInit {
   public authors:GetAuthorModel[];
   private authorsSubs:Subscription;
   constructor(
@@ -27,8 +27,8 @@ export class AuthorsComponent implements OnInit, OnDestroy {
     this.store.dispatch(getAuthors());
   }
 
-  ngOnDestroy(): void {
+  /* ngOnDestroy(): void {
     this.authorsSubs.unsubscribe();
-  }
+  } */
 
 }

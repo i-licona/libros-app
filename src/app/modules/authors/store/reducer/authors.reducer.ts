@@ -29,7 +29,14 @@ const _authorsReducer = createReducer(initialState,
   on(actions.getAuthorsError, (state, {error}) => ({
     ...state,
     authors: [],
+    loadding: false,
     error:error
+  })),
+  on(actions.UnsetAuthors, state => ({
+    ...state,
+    authors: [],
+    error:null,
+    loadding:false,
   }))
 
 );

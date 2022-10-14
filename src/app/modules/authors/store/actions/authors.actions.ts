@@ -12,3 +12,7 @@ export const getAuthorsError = createAction(
   '[Authors Component] Get Authors Error',
   props<{ error:any }>()
 );
+
+export const UnsetAuthors = createAction(
+  '[Authors Component] Unset Authors'
+);

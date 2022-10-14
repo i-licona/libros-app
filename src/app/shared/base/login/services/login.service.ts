@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
+import { UnsetAuthors } from 'src/app/modules/authors/store/actions/authors.actions';
 import { PostLoginModel, PostResponseLoginModel } from '../models/login.model';
 
 @Injectable({
@@ -32,6 +33,10 @@ export class LoginService {
   getToken():string{
     this.token = localStorage.getItem('token');
     return this.token;
+  }
+
+  logOut(){
+
   }
 
 

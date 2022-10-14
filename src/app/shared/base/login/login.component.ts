@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { UnsetAuthors } from 'src/app/modules/authors/store/actions/authors.actions';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -21,7 +24,7 @@ export class LoginComponent implements OnInit {
     private loginService:LoginService,
     private snackBar: MatSnackBar,
     private datePipe:DatePipe,
-    private router:Router
+    private router:Router,
   ) {
     this.formLogin = this.formBuilder.group({
       email:[null, [Validators.required, Validators.email]],
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
   /* save Changes method */
   saveChanges(){
